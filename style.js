@@ -80,24 +80,26 @@ function displayhtml() {
 
 // tính tổng số nguyên dương
 function tinhTongSoNguyenDuong() {
-  const sum = arrSoNguyen
-    .filter((value) => {
-      return value > 0;
-    })
-    .reduce((total, value) => {
-      return total + value;
-    });
+  let  sum = 0
+  for (let number of arrSoNguyen) {
+    if (number>0) {
+    sum +=number      
+    }    
+  }
   const sumoutput = document.getElementById("result-b1");
   sumoutput.innerHTML = `Tổng các số nguyên dương là: ${sum}`;
 }
 
 // Đếm có bao nhiêu số dương trong mảng
 function demSoNguyenDuong() {
-  const count = arrSoNguyen.filter((value) => {
-    return value > 0;
-  });
+ let count = 0 
+  for (let number of arrSoNguyen) {
+    if (number>0) {
+    count+=1      
+    }    
+  }
   const countoutput = document.getElementById("result-b2");
-  countoutput.innerHTML = `Các số nguyên dương trong mảng là: ${count.length}`;
+  countoutput.innerHTML = `Các số nguyên dương trong mảng là: ${count}`;
 }
 
 //Tìm số nhỏ nhất trong mảng
