@@ -4,7 +4,7 @@ document.getElementById("btNhapSo").onsubmit = function themso(event) {
   event.preventDefault();
   let nhapSo = document.getElementById("nhapSo").value.trim() * 1;
 
-  if (nhapSo == "" ) {
+  if (nhapSo == "") {
     alert("Vui lòng nhập số hợp lệ");
     return;
   } //if (!isNaN(nhapSo)) {
@@ -59,22 +59,23 @@ function resetArr() {
 }
 
 function displayhtml() {
-  const num = document.getElementById("allSoNguyen");
-  num.innerHTML = "";
-  if (arrSoNguyen.length > 0) {
-    arrSoNguyen.forEach((item, index) => {
-      const div = document.createElement("div");
-      if (index < arrSoNguyen.length - 1) {
-        div.textContent = item + ",  ";
-      } else {
-        div.textContent = item;
-      }
-      div.className = "d-inline";
-      num.appendChild(div);
-    });
-  } else {
-    num.innerHTML = "Mảng trống";
-  }
+  let num = document.getElementById("allSoNguyen");
+
+  num.innerHTML = `${arrSoNguyen.join(", ")}`;
+  //   if (arrSoNguyen.length > 0) {
+  //     arrSoNguyen.forEach((item, index) => {
+  //       const div = document.createElement("div");
+  //       if (index < arrSoNguyen.length - 1) {
+  //         div.textContent = item + ",  ";
+  //       } else {
+  //         div.textContent = item;
+  //       }
+  //       div.className = "d-inline";
+  //       num.appendChild(div);
+  //     });
+  //   } else {
+  //     num.innerHTML = "Mảng trống";
+  //   }
 }
 
 // tính tổng số nguyên dương
