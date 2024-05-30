@@ -10,9 +10,9 @@ document.getElementById("btNhapSo").onsubmit = function themso(event) {
   }
   Number(nhapSo);
 
-  if (!isNaN(nhapSo)) {
-    if (Math.floor(nhapSo) == nhapSo) {
-      arrSoNguyen.push(nhapSo);
+  if (!isNaN(nhapSo*1)) {
+    if (Math.floor(nhapSo*1) == nhapSo*1) {
+      arrSoNguyen.push(nhapSo*1);
 
       document.getElementById("nhapSo").value = ""; //xoa o input;
       displayhtml();
