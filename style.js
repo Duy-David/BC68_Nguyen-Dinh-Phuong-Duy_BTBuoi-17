@@ -2,45 +2,49 @@ const arrSoNguyen = [];
 
 document.getElementById("btNhapSo").onsubmit = function themso(event) {
   event.preventDefault();
-  let nhapSo = document.getElementById("nhapSo").value.trim() * 1;
+  let nhapSo = document.getElementById("nhapSo").value.trim();
 
   if (nhapSo == "") {
     alert("Vui lòng nhập số hợp lệ");
     return;
-  } //if (!isNaN(nhapSo)) {
-  else if (Math.floor(nhapSo) == nhapSo || nhapSo == 0) {
-    arrSoNguyen.push(nhapSo);
-
-    document.getElementById("nhapSo").value = ""; //xoa o input;
-    displayhtml();
-
-    // Bài 1:Tính tổng các số nguyên dương
-    tinhTongSoNguyenDuong();
-    console.log(arrSoNguyen);
-    // bài 2:ĐẾm số nguyên dương
-    demSoNguyenDuong();
-    // Bài 3:Tìm số nhỏ nhất trong mảng
-    soNhoNhatTrongMang();
-    // Bài 4:Tìm số dương nhỏ nhất trong mảng
-    soDuongNhoNhatTrongMang();
-    // Bài 5: Tìm số chẳn cuối cùng trong mảng. Nếu mảng không có số chẳn kết quả trả về -1
-    soChanTrongMang();
-    // Bài 6: Đổi chổ 2 giá trị trong mảng theo vị trí
-    swapElements();
-    // Bài 7: Sắp xếp mảng theo thứ tự tăng dần
-    mangTheoThuTuTangDan();
-    //Bài 8: Tìm nguyên tố đầu tiên trong mảng. Nếu mảng không có số  nguyên tố kết quả trả về -1
-    songuyentoTrongMang();
-    //Bài 9: Nhập một mãng số thực, tìm xem trong mãng có bao nhiêu số nguyên
-    //Bài 10: So sánh số lượng số âm và số lượng số dương số nào nhiều hơn
-    compare();
-  } else {
-    alert("Vui lòng nhập số nguyên");
   }
-  // } else if (isNaN(nhapSo)) {
-  //   alert("Vui lòng nhập số hợp lệ");
-  //   return;
-  //  }
+  Number(nhapSo);
+
+  if (!isNaN(nhapSo)) {
+    if (Math.floor(nhapSo) == nhapSo || nhapSo == 0) {
+      arrSoNguyen.push(nhapSo);
+
+      document.getElementById("nhapSo").value = ""; //xoa o input;
+      displayhtml();
+
+      // Bài 1:Tính tổng các số nguyên dương
+      tinhTongSoNguyenDuong();
+      console.log(arrSoNguyen);
+      // bài 2:ĐẾm số nguyên dương
+      demSoNguyenDuong();
+      // Bài 3:Tìm số nhỏ nhất trong mảng
+      soNhoNhatTrongMang();
+      // Bài 4:Tìm số dương nhỏ nhất trong mảng
+      soDuongNhoNhatTrongMang();
+      // Bài 5: Tìm số chẳn cuối cùng trong mảng. Nếu mảng không có số chẳn kết quả trả về -1
+      soChanTrongMang();
+      // Bài 6: Đổi chổ 2 giá trị trong mảng theo vị trí
+      swapElements();
+      // Bài 7: Sắp xếp mảng theo thứ tự tăng dần
+      mangTheoThuTuTangDan();
+      //Bài 8: Tìm nguyên tố đầu tiên trong mảng. Nếu mảng không có số  nguyên tố kết quả trả về -1
+      songuyentoTrongMang();
+      //Bài 9: Nhập một mãng số thực, tìm xem trong mãng có bao nhiêu số nguyên
+      //Bài 10: So sánh số lượng số âm và số lượng số dương số nào nhiều hơn
+      compare();
+    } else {
+      alert("Vui lòng nhập số nguyên");
+    }
+    // } else if (isNaN(nhapSo)) {
+    //   alert("Vui lòng nhập số hợp lệ");
+    //   return;
+    //  }
+  }
 };
 function resetArr() {
   // arrSoNguyen=[]
@@ -80,11 +84,11 @@ function displayhtml() {
 
 // tính tổng số nguyên dương
 function tinhTongSoNguyenDuong() {
-  let  sum = 0
+  let sum = 0;
   for (let number of arrSoNguyen) {
-    if (number>0) {
-    sum +=number      
-    }    
+    if (number > 0) {
+      sum += number;
+    }
   }
   const sumoutput = document.getElementById("result-b1");
   sumoutput.innerHTML = `Tổng các số nguyên dương là: ${sum}`;
@@ -92,11 +96,11 @@ function tinhTongSoNguyenDuong() {
 
 // Đếm có bao nhiêu số dương trong mảng
 function demSoNguyenDuong() {
- let count = 0 
+  let count = 0;
   for (let number of arrSoNguyen) {
-    if (number>0) {
-    count+=1      
-    }    
+    if (number > 0) {
+      count += 1;
+    }
   }
   const countoutput = document.getElementById("result-b2");
   countoutput.innerHTML = `Các số nguyên dương trong mảng là: ${count}`;
