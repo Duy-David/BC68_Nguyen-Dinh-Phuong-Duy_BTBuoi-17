@@ -5,13 +5,13 @@ document.getElementById("btNhapSo").onsubmit = function themso(event) {
   let nhapSo = document.getElementById("nhapSo").value.trim();
 
   if (nhapSo == "") {
-    alert("Vui lòng nhập số hợp lệ");
+    alert("Vui lòng nhập số bất kỳ");
     return;
   }
   Number(nhapSo);
 
   if (!isNaN(nhapSo)) {
-    if (Math.floor(nhapSo) == nhapSo || nhapSo == 0) {
+    if (Math.floor(nhapSo) == nhapSo) {
       arrSoNguyen.push(nhapSo);
 
       document.getElementById("nhapSo").value = ""; //xoa o input;
@@ -22,30 +22,37 @@ document.getElementById("btNhapSo").onsubmit = function themso(event) {
       console.log(arrSoNguyen);
       // bài 2:ĐẾm số nguyên dương
       demSoNguyenDuong();
+      console.log(arrSoNguyen);
       // Bài 3:Tìm số nhỏ nhất trong mảng
       soNhoNhatTrongMang();
+      console.log(arrSoNguyen);
       // Bài 4:Tìm số dương nhỏ nhất trong mảng
       soDuongNhoNhatTrongMang();
+      console.log(arrSoNguyen);
       // Bài 5: Tìm số chẳn cuối cùng trong mảng. Nếu mảng không có số chẳn kết quả trả về -1
       soChanTrongMang();
+      console.log(arrSoNguyen);
       // Bài 6: Đổi chổ 2 giá trị trong mảng theo vị trí
       swapElements();
+      console.log(arrSoNguyen);
       // Bài 7: Sắp xếp mảng theo thứ tự tăng dần
       mangTheoThuTuTangDan();
+      console.log(arrSoNguyen);
       //Bài 8: Tìm nguyên tố đầu tiên trong mảng. Nếu mảng không có số  nguyên tố kết quả trả về -1
       songuyentoTrongMang();
       //Bài 9: Nhập một mãng số thực, tìm xem trong mãng có bao nhiêu số nguyên
       //Bài 10: So sánh số lượng số âm và số lượng số dương số nào nhiều hơn
       compare();
+      console.log(arrSoNguyen);
     } else {
       alert("Vui lòng nhập số nguyên");
     }
-    // } else if (isNaN(nhapSo)) {
-    //   alert("Vui lòng nhập số hợp lệ");
-    //   return;
-    //  }
+  } else {
+    alert("Vui lòng nhập số  hợp lệ");
+    return;
   }
 };
+
 function resetArr() {
   // arrSoNguyen=[]
   arrSoNguyen.length = 0;
@@ -64,8 +71,9 @@ function resetArr() {
 
 function displayhtml() {
   let num = document.getElementById("allSoNguyen");
-
+// c1
   num.innerHTML = `${arrSoNguyen.join(", ")}`;
+// c2 
   //   if (arrSoNguyen.length > 0) {
   //     arrSoNguyen.forEach((item, index) => {
   //       const div = document.createElement("div");
