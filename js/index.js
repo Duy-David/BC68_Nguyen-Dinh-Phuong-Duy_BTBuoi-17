@@ -1,34 +1,43 @@
 const arrSoNguyen = [];
 document.getElementById("btNhapSo").onsubmit = function themso(event) {
   event.preventDefault();
-  let nhapSo = document.getElementById("nhapSo").value * 1;
-  if (nhapSo != "") {
-    arrSoNguyen.push(nhapSo);
+  let nhapSo = document.getElementById("nhapSo").value.trim() * 1;
+  if (nhapSo =="") {
+    alert("Vui lòng nhập số hợp lệ");
+    return;
+  } else if (!isNaN(nhapSo)) {
+    if (Number.isFinite(nhapSo) && Math.floor(nhapSo) === nhapSo) {
 
-    document.getElementById("nhapSo").value = ""; //xoa o input;
-    displayhtml();
-    // Bài 1:Tính tổng các số nguyên dương
-    tinhTongSoNguyenDuong();
-    console.log(arrSoNguyen);
-    // bài 2:ĐẾm số nguyên dương
-    demSoNguyenDuong();
-    // Bài 3:Tìm số nhỏ nhất trong mảng
-    soNhoNhatTrongMang();
-    // Bài 4:Tìm số dương nhỏ nhất trong mảng
-    soDuongNhoNhatTrongMang();
-    // Bài 5: Tìm số chẳn cuối cùng trong mảng. Nếu mảng không có số chẳn kết quả trả về -1
-    soChanTrongMang();
-    // Bài 6: Đổi chổ 2 giá trị trong mảng theo vị trí
-    swapElements();
-    // Bài 7: Sắp xếp mảng theo thứ tự tăng dần
-    mangTheoThuTuTangDan();
-    //Bài 8: Tìm nguyên tố đầu tiên trong mảng. Nếu mảng không có số  nguyên tố kết quả trả về -1
-    songuyentoTrongMang();
-    //Bài 9: Nhập một mãng số thực, tìm xem trong mãng có bao nhiêu số nguyên
-    //Bài 10: So sánh số lượng số âm và số lượng số dương số nào nhiều hơn
-    compare()
-  } else {
-    alert("vui lòng nhập số");
+      arrSoNguyen.push(nhapSo);
+
+      document.getElementById("nhapSo").value = ""; //xoa o input;
+      displayhtml();
+      // Bài 1:Tính tổng các số nguyên dương
+      tinhTongSoNguyenDuong();
+      console.log(arrSoNguyen);
+      // bài 2:ĐẾm số nguyên dương
+      demSoNguyenDuong();
+      // Bài 3:Tìm số nhỏ nhất trong mảng
+      soNhoNhatTrongMang();
+      // Bài 4:Tìm số dương nhỏ nhất trong mảng
+      soDuongNhoNhatTrongMang();
+      // Bài 5: Tìm số chẳn cuối cùng trong mảng. Nếu mảng không có số chẳn kết quả trả về -1
+      soChanTrongMang();
+      // Bài 6: Đổi chổ 2 giá trị trong mảng theo vị trí
+      swapElements();
+      // Bài 7: Sắp xếp mảng theo thứ tự tăng dần
+      mangTheoThuTuTangDan();
+      //Bài 8: Tìm nguyên tố đầu tiên trong mảng. Nếu mảng không có số  nguyên tố kết quả trả về -1
+      songuyentoTrongMang();
+      //Bài 9: Nhập một mãng số thực, tìm xem trong mãng có bao nhiêu số nguyên
+      //Bài 10: So sánh số lượng số âm và số lượng số dương số nào nhiều hơn
+      compare();
+    } else {
+      alert("Vui lòng nhập số nguyên");
+    }
+  } else if (isNaN(nhapSo)) {
+    alert("Vui lòng nhập số hợp lệ");
+    return;
   }
 };
 function displayhtml() {
@@ -153,23 +162,6 @@ function mangTheoThuTuTangDan() {
 //Tìm nguyên tố đầu tiên trong mảng. Nếu mảng không có số  nguyên tố kết quả trả về -1
 function songuyentoTrongMang() {
   let isPrime = [];
-  // for (let index = 0; index < arrSoNguyen.length; index++) {
-  //   if(arrSoNguyen[index]<=1){
-  //     isPrime = []
-  //   }else if(arrSoNguyen[index]==2){
-  //     isPrime.push(arrSoNguyen[index])
-  //     // Math.sqrt tìm căn bậc 2 của một số
-  //   }else if(arrSoNguyen[index]>2){
-  //     for(let i = 2;i<arrSoNguyen[index];i++){
-  //       if(arrSoNguyen[index]%i !== 0){
-  //         isPrime.push(arrSoNguyen[index])
-  //       break
-  //       }
-  //     }
-  //   }
-
-  // }
-  // }
   for (let index = 0; index < arrSoNguyen.length; index++) {
     if (isPrime1(arrSoNguyen[index]) == 1) {
       isPrime.push(arrSoNguyen[index]);
@@ -184,6 +176,13 @@ function songuyentoTrongMang() {
     }
   }
   console.log(isPrime);
+  if (isPrime == []) {
+    document.getElementById('allSoNguyenTo').innerHTML=`Không có số nguyên tố trong mảng`
+    
+  } else {
+    document.getElementById('allSoNguyenTo').innerHTML=`Tất cả số nguyên tố trong mảng: ${isPrime.join(', ')}`
+    
+  }
   const isPrimeNumOutput = document.getElementById("result-b8");
   isPrimeNumOutput.innerHTML = `Số nguyên tố đầu tiên trong mảng là: ${isPrimeNum}`;
 }
@@ -259,15 +258,14 @@ function compare() {
       countSoAM++;
     }
   }
-  document.getElementById('soAm').innerHTML=soAm.join(', ')
-  document.getElementById('soDuong').innerHTML=soDuong.join(', ')
+  document.getElementById("soAm").innerHTML = soAm.join(", ");
+  document.getElementById("soDuong").innerHTML = soDuong.join(", ");
   const compareOutput = document.getElementById("result-b10");
-if (countSoAM>countSoDuong) {
-  compareOutput.innerHTML =`Số lượng số âm(${countSoAM}) lớn hơn số lượng số dương(${countSoDuong})`
-} else if(countSoAM<countSoDuong){
-  compareOutput.innerHTML =`Số lượng số âm(${countSoAM}) nhỏ hơn số lượng số dương(${countSoDuong})`
-}else{
-  compareOutput.innerHTML =`Số lượng số âm(${countSoAM}) bằng số lượng số dương(${countSoDuong})`
-
-}
+  if (countSoAM > countSoDuong) {
+    compareOutput.innerHTML = `Số lượng số âm(${countSoAM}) lớn hơn số lượng số dương(${countSoDuong})`;
+  } else if (countSoAM < countSoDuong) {
+    compareOutput.innerHTML = `Số lượng số âm(${countSoAM}) nhỏ hơn số lượng số dương(${countSoDuong})`;
+  } else {
+    compareOutput.innerHTML = `Số lượng số âm(${countSoAM}) bằng số lượng số dương(${countSoDuong})`;
+  }
 }
