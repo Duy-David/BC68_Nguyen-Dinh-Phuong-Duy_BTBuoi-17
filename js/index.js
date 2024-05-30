@@ -1,45 +1,63 @@
 const arrSoNguyen = [];
+
 document.getElementById("btNhapSo").onsubmit = function themso(event) {
   event.preventDefault();
   let nhapSo = document.getElementById("nhapSo").value.trim() * 1;
-  if (nhapSo =="") {
+
+  if (nhapSo == "" ) {
     alert("Vui lòng nhập số hợp lệ");
     return;
-  } else if (!isNaN(nhapSo)) {
-    if (Number.isFinite(nhapSo) && Math.floor(nhapSo) === nhapSo) {
+  } //if (!isNaN(nhapSo)) {
+  else if (Math.floor(nhapSo) == nhapSo || nhapSo == 0) {
+    arrSoNguyen.push(nhapSo);
 
-      arrSoNguyen.push(nhapSo);
+    document.getElementById("nhapSo").value = ""; //xoa o input;
+    displayhtml();
 
-      document.getElementById("nhapSo").value = ""; //xoa o input;
-      displayhtml();
-      // Bài 1:Tính tổng các số nguyên dương
-      tinhTongSoNguyenDuong();
-      console.log(arrSoNguyen);
-      // bài 2:ĐẾm số nguyên dương
-      demSoNguyenDuong();
-      // Bài 3:Tìm số nhỏ nhất trong mảng
-      soNhoNhatTrongMang();
-      // Bài 4:Tìm số dương nhỏ nhất trong mảng
-      soDuongNhoNhatTrongMang();
-      // Bài 5: Tìm số chẳn cuối cùng trong mảng. Nếu mảng không có số chẳn kết quả trả về -1
-      soChanTrongMang();
-      // Bài 6: Đổi chổ 2 giá trị trong mảng theo vị trí
-      swapElements();
-      // Bài 7: Sắp xếp mảng theo thứ tự tăng dần
-      mangTheoThuTuTangDan();
-      //Bài 8: Tìm nguyên tố đầu tiên trong mảng. Nếu mảng không có số  nguyên tố kết quả trả về -1
-      songuyentoTrongMang();
-      //Bài 9: Nhập một mãng số thực, tìm xem trong mãng có bao nhiêu số nguyên
-      //Bài 10: So sánh số lượng số âm và số lượng số dương số nào nhiều hơn
-      compare();
-    } else {
-      alert("Vui lòng nhập số nguyên");
-    }
-  } else if (isNaN(nhapSo)) {
-    alert("Vui lòng nhập số hợp lệ");
-    return;
+    // Bài 1:Tính tổng các số nguyên dương
+    tinhTongSoNguyenDuong();
+    console.log(arrSoNguyen);
+    // bài 2:ĐẾm số nguyên dương
+    demSoNguyenDuong();
+    // Bài 3:Tìm số nhỏ nhất trong mảng
+    soNhoNhatTrongMang();
+    // Bài 4:Tìm số dương nhỏ nhất trong mảng
+    soDuongNhoNhatTrongMang();
+    // Bài 5: Tìm số chẳn cuối cùng trong mảng. Nếu mảng không có số chẳn kết quả trả về -1
+    soChanTrongMang();
+    // Bài 6: Đổi chổ 2 giá trị trong mảng theo vị trí
+    swapElements();
+    // Bài 7: Sắp xếp mảng theo thứ tự tăng dần
+    mangTheoThuTuTangDan();
+    //Bài 8: Tìm nguyên tố đầu tiên trong mảng. Nếu mảng không có số  nguyên tố kết quả trả về -1
+    songuyentoTrongMang();
+    //Bài 9: Nhập một mãng số thực, tìm xem trong mãng có bao nhiêu số nguyên
+    //Bài 10: So sánh số lượng số âm và số lượng số dương số nào nhiều hơn
+    compare();
+  } else {
+    alert("Vui lòng nhập số nguyên");
   }
+  // } else if (isNaN(nhapSo)) {
+  //   alert("Vui lòng nhập số hợp lệ");
+  //   return;
+  //  }
 };
+function resetArr() {
+  // arrSoNguyen=[]
+  arrSoNguyen.length = 0;
+  document.getElementById("allSoNguyen").innerHTML = "";
+  document.getElementById("result-b1").innerHTML = "";
+  document.getElementById("result-b2").innerHTML = "";
+  document.getElementById("result-b3").innerHTML = "";
+  document.getElementById("result-b4").innerHTML = "";
+  document.getElementById("result-b5").innerHTML = "";
+  document.getElementById("result-b6").innerHTML = "";
+  document.getElementById("result-b7").innerHTML = "";
+  document.getElementById("result-b8").innerHTML = "";
+  document.getElementById("result-b9").innerHTML = "";
+  document.getElementById("result-b10").innerHTML = "";
+}
+
 function displayhtml() {
   const num = document.getElementById("allSoNguyen");
   num.innerHTML = "";
@@ -55,7 +73,7 @@ function displayhtml() {
       num.appendChild(div);
     });
   } else {
-    num.textContent = "Mảng trống";
+    num.innerHTML = "Mảng trống";
   }
 }
 
@@ -177,11 +195,13 @@ function songuyentoTrongMang() {
   }
   console.log(isPrime);
   if (isPrime == []) {
-    document.getElementById('allSoNguyenTo').innerHTML=`Không có số nguyên tố trong mảng`
-    
+    document.getElementById(
+      "allSoNguyenTo"
+    ).innerHTML = `Không có số nguyên tố trong mảng`;
   } else {
-    document.getElementById('allSoNguyenTo').innerHTML=`Tất cả số nguyên tố trong mảng: ${isPrime.join(', ')}`
-    
+    document.getElementById(
+      "allSoNguyenTo"
+    ).innerHTML = `Tất cả số nguyên tố trong mảng: ${isPrime.join(", ")}`;
   }
   const isPrimeNumOutput = document.getElementById("result-b8");
   isPrimeNumOutput.innerHTML = `Số nguyên tố đầu tiên trong mảng là: ${isPrimeNum}`;
@@ -238,7 +258,7 @@ function filterSoNguyen() {
   console.log(arrSoNguyenMoi);
   console.log(countSoNguyen);
   const soNguyenOutput = document.getElementById("result-b9");
-  soNguyenOutput.innerHTML = `Trong mãng[${arrSoThuc}] có ${countSoNguyen} số nguyên bao gồm ${arrSoNguyenMoi.join(
+  soNguyenOutput.innerHTML = `Trong mảng[${arrSoThuc}] có ${countSoNguyen} số nguyên bao gồm ${arrSoNguyenMoi.join(
     ", "
   )}`;
 }
