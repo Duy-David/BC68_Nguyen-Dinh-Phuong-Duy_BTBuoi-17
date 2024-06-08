@@ -10,9 +10,9 @@ document.getElementById("btNhapSo").onsubmit = function themso(event) {
   }
   Number(nhapSo);
 
-  if (!isNaN(nhapSo*1)) {
-    if (Math.floor(nhapSo*1) == nhapSo*1) {
-      arrSoNguyen.push(nhapSo*1);
+  if (!isNaN(nhapSo * 1)) {
+    if (Math.floor(nhapSo * 1) == nhapSo * 1) {
+      arrSoNguyen.push(nhapSo * 1);
 
       document.getElementById("nhapSo").value = ""; //xoa o input;
       displayhtml();
@@ -71,9 +71,9 @@ function resetArr() {
 
 function displayhtml() {
   let num = document.getElementById("allSoNguyen");
-// c1
+  // c1
   num.innerHTML = `${arrSoNguyen.join(", ")}`;
-// c2 
+  // c2
   //   if (arrSoNguyen.length > 0) {
   //     arrSoNguyen.forEach((item, index) => {
   //       const div = document.createElement("div");
@@ -172,9 +172,9 @@ function swapElements() {
     index2 >= 0 &&
     index2 < arrSoNguyen.length
   ) {
-    let temp = arrSoNguyen[index1];
-    arrSoNguyen[index1] = arrSoNguyen[index2];
-    arrSoNguyen[index2] = temp;
+    let temp = arrSoNguyen[index1 - 1];
+    arrSoNguyen[index1 - 1] = arrSoNguyen[index2 - 1];
+    arrSoNguyen[index2 - 1] = temp;
     const thayDoiVitriOutput = document.getElementById("result-b6");
 
     thayDoiVitriOutput.innerHTML = ` Mảng mới: [${arrSoNguyen.join(", ")}]`;
